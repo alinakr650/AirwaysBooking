@@ -66,6 +66,13 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(UserAlreadyRegisteredException.class)
+    public final ResponseEntity<Object> handleAllExceptions(UserAlreadyRegisteredException ex, WebRequest webRequest)
+    {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(Instant.now(), ex.getMessage(), webRequest.getDescription(false));
+        return new ResponseEntity(exceptionResponse, HttpStatus.NOT_ACCEPTABLE);
+    }
+
     @ExceptionHandler(AuthenticationException.class)
     public final ResponseEntity<Object> handleAllExceptions(AuthenticationException ex, WebRequest webRequest)
     {

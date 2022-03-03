@@ -6,8 +6,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @Retention(RetentionPolicy.RUNTIME)
-@PreAuthorize("hasAuthority('passenger.update') OR " +
-        "hasAuthority('passenger.passenger.update') " +
+@PreAuthorize("hasAuthority('passenger.create') OR " +
+        "hasAuthority('passenger.passenger.create') " +
         " AND @ticketPurchaseAuthenticationManager.passengerIdMatches(authentication, #passengerId)" )
 public @interface PassengerCreatePermission {
 }

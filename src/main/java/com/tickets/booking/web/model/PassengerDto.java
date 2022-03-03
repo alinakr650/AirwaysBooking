@@ -1,9 +1,6 @@
 package com.tickets.booking.web.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.tickets.booking.domain.TicketEntity;
 import com.tickets.booking.domain.nationalities.Nationality;
 import lombok.*;
 
@@ -11,8 +8,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.Valid;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Builder

@@ -1,7 +1,11 @@
 package com.tickets.booking.web.controller;
 
+import com.tickets.booking.domain.PassengerEntity;
 import com.tickets.booking.domain.security.User;
 import com.tickets.booking.repository.security.UserRepository;
+import com.tickets.booking.security.UserService;
+import com.tickets.booking.services.exceptions.UserAlreadyRegisteredException;
+import com.tickets.booking.web.model.PassengerDto;
 import com.warrenstrange.googleauth.GoogleAuthenticator;
 import com.warrenstrange.googleauth.GoogleAuthenticatorQRGenerator;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.management.relation.RoleNotFoundException;
+import java.util.Optional;
+
 @RequestMapping("/user")
 @RestController
 @RequiredArgsConstructor
@@ -17,6 +24,13 @@ public class UserController {
 
     private final UserRepository userRepository;
     private final GoogleAuthenticator googleAuthenticator;
+    private final UserService userService;
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createNewUser(@RequestParam String username, @RequestParam String password, @RequestBody PassengerDto passengerDto) throws RoleNotFoundException{
+        userService.createNewUser(username, password, passengerDto);
+    }
 
     @GetMapping("/register2fa")
     public String register2fa() {

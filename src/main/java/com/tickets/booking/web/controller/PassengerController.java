@@ -6,12 +6,10 @@ import com.tickets.booking.security.permissions.PassengerReadPermission;
 import com.tickets.booking.security.permissions.PassengerUpdatePermission;
 import com.tickets.booking.services.PassengerService;
 import com.tickets.booking.web.model.PassengerDto;
-import com.tickets.booking.web.model.TicketDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
