@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: "jdbc:postgresql://localhost:1000/testdb"
+    password: "superpassword"
+    username: "superuser"
+    #    dialect: "org.hibernate.dialect.PostgreSQLDialect"
+    driver-class-name: "org.postgresql.Driver"
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        ddl-auto: none
+    generate-ddl: false
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-1.0.xml
+
+logging:
+  level:
+    org:
+      security: DEBUG
+      hibernate:
+        type:
+          descriptor:
+            sql: trace

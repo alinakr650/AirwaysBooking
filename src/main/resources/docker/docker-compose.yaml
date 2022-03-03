@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+    db: 
+        image: postgres:14.1
+        volumes: 
+            - db-data:/var/lib/postgresql/data
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: superpassword
+            POSTGRES_USER: superuser
+        ports:
+            - "1000:5432"
+
+
+volumes:
+  db-data:

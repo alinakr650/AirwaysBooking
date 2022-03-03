@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="A" id="20220216-1141">
+
+        <createTable tableName="route">
+            <column name="route_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_route_route_id"/>
+            </column>
+            <column name="origin" type="VARCHAR(255)">
+            </column>
+            <column name="destination" type="VARCHAR(255)">
+            </column>
+            <column name="flight_number" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="flight">
+            <column name="flight_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_flight_flight_id"/>
+            </column>
+            <column name="flight_number" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="time_of_arrival" type="TIME">
+            </column>
+            <column name="time_of_departure" type="TIME">
+            </column>
+            <column name="flight_duration" type="TIME">
+            </column>
+            <column name="date_of_departure" type="DATE">
+            </column>
+            <column name="date_of_arrival" type="DATE">
+            </column>
+            <column name="plane_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="route_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="NUMERIC">
+            </column>
+        </createTable>
+
+        <createIndex tableName="flight" indexName="idx_pk_fli_flight_id">
+            <column name="flight_id"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseTableName="flight"
+                                 baseColumnNames="route_id"
+                                 constraintName="fk_flight_route_id" referencedColumnNames="route_id"
+                                 referencedTableName="route"
+                                 deleteCascade="true"/>
+    </changeSet>
+
+    <changeSet author="A" id="20220217-0930">
+
+        <createTable tableName="passengers">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_passengers_passenger_id"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="middle_name" type="VARCHAR(255)">
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nationality" type="VARCHAR(255)">
+            </column>
+            <column name="passport_number" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createIndex tableName="passengers" indexName="idx_pk_pas_passenger_id">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="A" id="20220217-1013">
+        <createTable tableName="ticket">
+            <column name="ticket_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_ticket_ticket_id"/>
+            </column>
+            <column name="flight_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="fk_ticket_flight_id" references="flight(flight_id)" deleteCascade="true"/>
+            </column>
+            <column name="active" type="BOOLEAN">
+            </column>
+        </createTable>
+
+        <createIndex tableName="ticket" indexName="idx_pk_tick_ticket_id">
+            <column name="ticket_id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet author="A" id="20220217-1014">
+        <createTable tableName="passengers_tickets">
+            <column name="passenger_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_passengers_tickets_passenger_id"
+                             foreignKeyName="fk_passengers_tickets_passenger_id" references="passengers(id)"/>
+            </column>
+            <column name="ticket_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_passengers_tickets_ticket_id"
+                             foreignKeyName="fk_passengers_tickets_ticket_id" references="ticket(ticket_id)"  deleteCascade="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="reserved_seats">
+            <column name="reserved_seat_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_res_seat_reserved_seat_id"/>
+            </column>
+            <column name="flight_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="flight_id" references="flight(flight_id)" deleteCascade="true"/>
+            </column>
+            <column name="ticket_id" type="UUID">
+                <constraints nullable="false" foreignKeyName="ticket_id" references="ticket(ticket_id)" deleteCascade="true"/>
+            </column>
+            <column name="seat_number" type="VARCHAR(255)">
+                <constraints unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="202203021530" author="A">
+        <createTable tableName="users">
+            <column name="user_id" type="NUMERIC">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users_user_id"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+            </column>
+            <column name="password" type="VARCHAR(255)">
+            </column>
+            <column name="enabled" type="BOOLEAN">
+            </column>
+            <column name="credentials_non_expired" type="BOOLEAN">
+            </column>
+            <column name="account_non_expired" type="BOOLEAN">
+            </column>
+            <column name="account_non_locked" type="BOOLEAN">
+            </column>
+            <column name="created_date" type="TIMESTAMP">
+            </column>
+            <column name="last_modified_date" type="TIMESTAMP">
+            </column>
+            <column name="passenger_id" type="UUID">
+                <constraints foreignKeyName="fk_users_passenger_id" references="passengers(id)"/>
+            </column>
+            <column name="use_google2fa" type="BOOLEAN">
+            </column>
+            <column name="google2fa_secret" type="VARCHAR(255)">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="202203021535" author="A">
+        <createTable tableName="roles">
+            <column name="role_id" type="NUMERIC">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_roles_role_id"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+            </column>
+        </createTable>
+
+        <createTable tableName="authorities">
+            <column name="authority_id" type="NUMERIC">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_authorities_authority_id"/>
+            </column>
+            <column name="permission" type="VARCHAR(255)">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="202203021540" author="A">
+        <createTable tableName="user_role">
+            <column name="user_id" type="NUMERIC">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_role_user_id"
+                             foreignKeyName="fk_user_role_user_id" references="users(user_id)" deleteCascade="true"/>
+            </column>
+            <column name="role_id" type="NUMERIC">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_role_role_id"
+                             foreignKeyName="fk_user_role_role_id" references="roles(role_id)" deleteCascade="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="role_authority">
+            <column name="role_id" type="NUMERIC">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_role_authority_role_id"
+                             foreignKeyName="fk_role_authority_role_id" references="roles(role_id)" deleteCascade="true"/>
+            </column>
+            <column name="authority_id" type="NUMERIC">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_role_authority_authority_id"
+                             foreignKeyName="fk_role_authority_authority_id" references="authorities(authority_id)" deleteCascade="true"/>
+            </column>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="202203151057" author="A">
+        <createTable tableName="persistent_logins">
+            <column name="username" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="series" type="VARCHAR(64)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_persistent_logins_series"/>
+            </column>
+            <column name="token" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_used" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="A" id="20220222-0341">
+
+    <createTable tableName="login_success">
+        <column name="id" type="NUMERIC">
+            <constraints nullable="false" primaryKey="true" primaryKeyName="pk_login_success_id"/>
+        </column>
+        <column name="user_id" type="NUMERIC">
+            <constraints nullable="false" foreignKeyName="fk_login_success_user_id" references="users(user_id)"/>
+        </column>
+        <column name="source_ip" type="VARCHAR(255)">
+        </column>
+        <column name="created_date" type="TIMESTAMP">
+        </column>
+        <column name="last_modified_date" type="TIMESTAMP">
+        </column>
+    </createTable>
+
+        <createTable tableName="login_failure">
+            <column name="id" type="NUMERIC">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_login_failure_id"/>
+            </column>
+            <column name="user_id" type="NUMERIC">
+                <constraints nullable="false" foreignKeyName="fk_login_failure_user_id" references="users(user_id)"/>
+            </column>
+            <column name="source_ip" type="VARCHAR(255)">
+            </column>
+            <column name="username" type="VARCHAR(255)">
+            </column>
+            <column name="created_date" type="TIMESTAMP">
+            </column>
+            <column name="last_modified_date" type="TIMESTAMP">
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="202218132335" author="A">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+</databaseChangeLog>

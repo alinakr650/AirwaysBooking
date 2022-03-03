@@ -1,0 +1,22 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    database: postgresql
+    database-platform: "org.hibernate.dialect.PostgreSQLDialect"
+
+  datasource:
+    url: "jdbc:postgresql://localhost:1000/postgres"
+    password: ${db_password}
+    username: ${db_username}
+#    dialect: "org.hibernate.dialect.PostgreSQLDialect"
+    driver-class-name: "org.postgresql.Driver"
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-1.0.xml
+
+  security:
+    user:
+      password: password
+      user: user
