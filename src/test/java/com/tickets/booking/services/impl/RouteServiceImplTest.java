@@ -11,14 +11,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 
-import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class RouteServiceImplTest extends BaseTestClass {
-    
+
     @Autowired
     RouteService routeService;
 
@@ -32,7 +31,7 @@ class RouteServiceImplTest extends BaseTestClass {
 
     @Test
     void findAllRoutes() {
-        RoutePagedList routePagedList = routeService.findAllRoutes(PageRequest.of(0,10));
+        RoutePagedList routePagedList = routeService.findAllRoutes(PageRequest.of(0, 10));
         assertThat(routePagedList.stream()
                 .collect(Collectors.toList())
                 .size()).isEqualTo(2);
@@ -83,7 +82,7 @@ class RouteServiceImplTest extends BaseTestClass {
     @Test
     void getRouteIdByOriginAndDestination() {
         UUID id = routeService.getRouteIdByOriginAndDestination("London", "Cardiff");
-        
+
         assertThat(id).isNotNull();
     }
 

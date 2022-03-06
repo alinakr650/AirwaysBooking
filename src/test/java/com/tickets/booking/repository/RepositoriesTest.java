@@ -8,13 +8,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.not;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -36,7 +34,7 @@ public class RepositoriesTest {
     private ReservedSeatRepository reservedSeatRepository;
 
     @AfterEach
-    void deleteAll(){
+    void deleteAll() {
         reservedSeatRepository.deleteAll();
         passengerRepository.deleteAll();
         ticketsRepository.deleteAll();
@@ -45,7 +43,7 @@ public class RepositoriesTest {
     }
 
     @Test
-    void save(){
+    void save() {
 
         RouteEntity routeEntity = new RouteEntity();
         routeEntity.setOrigin("London");
@@ -64,8 +62,8 @@ public class RepositoriesTest {
         flightEntity.setRouteEntity(routeEntity);
         flightEntity.setPlaneName("BOEING_717");
         flightEntity.setFlightNumber(routeEntity.getFlightNumber());
-        flightEntity.setTimeOfArrival(LocalTime.of(5,40,0));
-        flightEntity.setTimeOfDeparture(LocalTime.of(3,10, 0));
+        flightEntity.setTimeOfArrival(LocalTime.of(5, 40, 0));
+        flightEntity.setTimeOfDeparture(LocalTime.of(3, 10, 0));
         flightEntity.setDateOfArrival(LocalDate.of(2022, 3, 21));
         flightEntity.setDateOfDeparture(LocalDate.of(2022, 3, 21));
         flightEntity.setPrice(new BigDecimal("112.50"));
@@ -74,8 +72,8 @@ public class RepositoriesTest {
         flightEntity1.setRouteEntity(routeEntity1);
         flightEntity1.setPlaneName("AIRBUS_A320");
         flightEntity1.setFlightNumber(routeEntity1.getFlightNumber());
-        flightEntity1.setTimeOfArrival(LocalTime.of(12,15,0));
-        flightEntity1.setTimeOfDeparture(LocalTime.of(10,5, 0));
+        flightEntity1.setTimeOfArrival(LocalTime.of(12, 15, 0));
+        flightEntity1.setTimeOfDeparture(LocalTime.of(10, 5, 0));
         flightEntity1.setDateOfArrival(LocalDate.of(2022, 4, 11));
         flightEntity1.setDateOfDeparture(LocalDate.of(2022, 4, 11));
         flightEntity1.setPrice(new BigDecimal("97.45"));
@@ -115,7 +113,7 @@ public class RepositoriesTest {
         reservedSeatRepository.save(reservedSeatEntity);
         reservedSeatRepository.save(reservedSeatEntity1);
 
-        ticketEntity1= ticketsRepository.findById(ticketEntity1.getId()).get();
+        ticketEntity1 = ticketsRepository.findById(ticketEntity1.getId()).get();
         assertThat(ticketEntity1.getPassengerEntity().getPassportNumber()).isEqualTo(passengerEntity1.getPassportNumber());
         assertThat(ticketEntity1.getFlightEntity()).isNotNull();
         assertThat(ticketEntity1.getFlightEntity().getId()).isEqualTo(flightEntity.getId());

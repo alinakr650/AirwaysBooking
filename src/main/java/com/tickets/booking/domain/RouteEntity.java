@@ -12,7 +12,6 @@ import java.util.*;
 @Entity
 @Getter
 @Setter
-//@ToString
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -51,7 +50,7 @@ public class RouteEntity implements Serializable {
     }
 
     @JsonManagedReference
-    public List<FlightEntity> getFlights(){
+    public List<FlightEntity> getFlights() {
         return flights;
     }
 

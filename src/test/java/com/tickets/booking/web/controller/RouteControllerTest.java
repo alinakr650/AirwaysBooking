@@ -85,7 +85,7 @@ class RouteControllerTest {
 
     }
 
-    @WithUserDetails("JimMoriarty")
+    @WithUserDetails("jimMoriarty@gmail.com")
     @Test
     void findRouteByIdPassenger() throws Exception {
         when(routeService.findById(uuid)).thenReturn(Optional.of(getValidRouteEntity()));
@@ -94,7 +94,7 @@ class RouteControllerTest {
                 .andExpect(status().is2xxSuccessful());
     }
 
-    @WithUserDetails("alinakr650")
+    @WithUserDetails("alinakr650@gmail.com")
     @Test
     void createNewRouteAdmin() throws Exception {
         RouteDto routeDto = getValidRouteDto();
@@ -107,7 +107,7 @@ class RouteControllerTest {
                 .andExpect(status().isCreated());
     }
 
-    @WithUserDetails("JimMoriarty")
+    @WithUserDetails("jimMoriarty@gmail.com")
     @Test
     void createNewRoutePassenger() throws Exception {
         RouteDto routeDto = getValidRouteDto();
@@ -120,7 +120,7 @@ class RouteControllerTest {
                 .andExpect(status().is4xxClientError());
     }
 
-    @WithUserDetails("alinakr650")
+    @WithUserDetails("alinakr650@gmail.com")
     @Test
     void updateRouteAdmin() throws Exception {
         given(routeService.updateRoute(any(RouteDto.class))).willReturn(getValidRouteDto());

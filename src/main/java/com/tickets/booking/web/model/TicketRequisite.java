@@ -1,6 +1,5 @@
 package com.tickets.booking.web.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tickets.booking.domain.nationalities.Nationality;
 import lombok.*;

@@ -4,7 +4,6 @@ import com.tickets.booking.domain.PassengerEntity;
 import com.tickets.booking.domain.TicketEntity;
 import com.tickets.booking.domain.security.Role;
 import com.tickets.booking.domain.security.User;
-import com.tickets.booking.repository.security.RoleRepository;
 import com.tickets.booking.security.permissions.SeatChangePermission;
 import com.tickets.booking.security.permissions.SeatDisplayAllPermission;
 import com.tickets.booking.security.permissions.SeatReservePermission;
@@ -15,7 +14,6 @@ import com.tickets.booking.services.exceptions.TicketNotFoundException;
 import com.tickets.booking.services.exceptions.UserNotFoundException;
 import com.tickets.booking.web.model.ReservedSeatDto;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 

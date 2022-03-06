@@ -19,10 +19,10 @@ class TicketServiceImplTest extends BaseTestClass {
 
     @Autowired
     TicketService ticketService;
-    
+
     @Autowired
     TicketMapper ticketMapper;
-    
+
     @BeforeEach
     void setUp() {
         super.saveEntities();
@@ -71,7 +71,7 @@ class TicketServiceImplTest extends BaseTestClass {
         assertThat(savedTicketRequisite.getFlightId()).isEqualTo(flightRepository.findAll().get(0).getId());
         assertThat(savedTicketRequisite.getPassengersPassportNumber()).isEqualTo(passengerRepository.findAll().get(0).getPassportNumber());
     }
-    
+
     private TicketDto returnValidDto() {
         TicketDto ticketDto = new TicketDto();
         ticketDto.setFlightId(flightRepository.findAll().get(0).getId());
@@ -90,5 +90,5 @@ class TicketServiceImplTest extends BaseTestClass {
         ticketRequisite.setPassengersNationality(Nationality.Albania);
         return ticketRequisite;
     }
-    
+
 }

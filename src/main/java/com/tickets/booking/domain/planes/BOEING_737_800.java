@@ -11,13 +11,14 @@ public class BOEING_737_800 extends Plane {
 
     private static BOEING_737_800 BOEING_737_800_INSTANCE = null;
 
-    private BOEING_737_800(){
+    private BOEING_737_800() {
 
     }
+
     private int seatsCount = 189;
 
-    public static BOEING_737_800 getInstance(){
-        if(BOEING_737_800_INSTANCE == null){
+    public static BOEING_737_800 getInstance() {
+        if (BOEING_737_800_INSTANCE == null) {
             BOEING_737_800_INSTANCE = new BOEING_737_800();
         }
         return BOEING_737_800_INSTANCE;

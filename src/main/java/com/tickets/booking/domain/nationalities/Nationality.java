@@ -203,13 +203,13 @@ public enum Nationality {
     Zambia,
     Zimbabwe;
 
-    Nationality(){
+    Nationality() {
     }
 
-    Nationality(String name){
+    Nationality(String name) {
     }
 
-    public static String getValue(String name){
+    public static String getValue(String name) {
         return valueOf(name).toString();
     }
 }

@@ -49,77 +49,76 @@ public class SecurityDataLoader implements CommandLineRunner {
     @Transactional
     void loadSecurityData() {
 
-            Authority createFlight = checkAndSaveAuthority("flight.create");
-            Authority readFlight = checkAndSaveAuthority("flight.read");
-            Authority updateFlight = checkAndSaveAuthority("flight.update");
-            Authority deleteFlight = checkAndSaveAuthority("flight.delete");
+        Authority createFlight = checkAndSaveAuthority("flight.create");
+        Authority readFlight = checkAndSaveAuthority("flight.read");
+        Authority updateFlight = checkAndSaveAuthority("flight.update");
+        Authority deleteFlight = checkAndSaveAuthority("flight.delete");
 
-            Authority createPassenger = checkAndSaveAuthority("passenger.create");
-            Authority readPassenger = checkAndSaveAuthority("passenger.read");
-            Authority readPassengerPassenger = checkAndSaveAuthority("passenger.passenger.read");
-            Authority updatePassenger = checkAndSaveAuthority("passenger.update");
-            Authority deletePassenger = checkAndSaveAuthority("passenger.delete");
-            Authority createPassengerPassenger = checkAndSaveAuthority("passenger.passenger.create");
+        Authority createPassenger = checkAndSaveAuthority("passenger.create");
+        Authority readPassenger = checkAndSaveAuthority("passenger.read");
+        Authority readPassengerPassenger = checkAndSaveAuthority("passenger.passenger.read");
+        Authority updatePassenger = checkAndSaveAuthority("passenger.update");
+        Authority deletePassenger = checkAndSaveAuthority("passenger.delete");
 
-            Authority createRoute = checkAndSaveAuthority("route.create");
-            Authority readRoute = checkAndSaveAuthority("route.read");
-            Authority updateRoute = checkAndSaveAuthority("route.update");
+        Authority createRoute = checkAndSaveAuthority("route.create");
+        Authority readRoute = checkAndSaveAuthority("route.read");
+        Authority updateRoute = checkAndSaveAuthority("route.update");
 
-            Authority createTicket = checkAndSaveAuthority("ticket.create");
-            Authority readTicket = checkAndSaveAuthority("ticket.read");
-            Authority updateTicket = checkAndSaveAuthority("ticket.update");
-            Authority deleteTicket = checkAndSaveAuthority("ticket.delete");
-            Authority createPassengerTicket = checkAndSaveAuthority("passenger.ticket.create");
-            Authority readPassengerTicket = checkAndSaveAuthority("passenger.ticket.read");
-            Authority updatePassengerTicket = checkAndSaveAuthority("passenger.ticket.update");
-            Authority deletePassengerTicket = checkAndSaveAuthority("passenger.ticket.delete");
+        Authority createTicket = checkAndSaveAuthority("ticket.create");
+        Authority readTicket = checkAndSaveAuthority("ticket.read");
+        Authority updateTicket = checkAndSaveAuthority("ticket.update");
+        Authority deleteTicket = checkAndSaveAuthority("ticket.delete");
+        Authority createPassengerTicket = checkAndSaveAuthority("passenger.ticket.create");
+        Authority readPassengerTicket = checkAndSaveAuthority("passenger.ticket.read");
+        Authority updatePassengerTicket = checkAndSaveAuthority("passenger.ticket.update");
+        Authority deletePassengerTicket = checkAndSaveAuthority("passenger.ticket.delete");
 
-            Authority reserveSeat = checkAndSaveAuthority("seat.reserve");
-            Authority displayAllSeats = checkAndSaveAuthority("seat.display");
-            Authority changeSeat = checkAndSaveAuthority("seat.change");
-            Authority passengerReserveSeat = checkAndSaveAuthority("passenger.seat.reserve");
-            Authority passengerDisplayAllSeats = checkAndSaveAuthority("passenger.seat.display");
-            Authority passengerChangeSeat = checkAndSaveAuthority("passenger.seat.change");
+        Authority reserveSeat = checkAndSaveAuthority("seat.reserve");
+        Authority displayAllSeats = checkAndSaveAuthority("seat.display");
+        Authority changeSeat = checkAndSaveAuthority("seat.change");
+        Authority passengerReserveSeat = checkAndSaveAuthority("passenger.seat.reserve");
+        Authority passengerDisplayAllSeats = checkAndSaveAuthority("passenger.seat.display");
+        Authority passengerChangeSeat = checkAndSaveAuthority("passenger.seat.change");
 
-            Role adminRole = checkAndSaveRole("ADMIN");
-            Role passengerRole = checkAndSaveRole("PASSENGER");
-            Role userRole = checkAndSaveRole("USER");
+        Role adminRole = checkAndSaveRole("ADMIN");
+        Role passengerRole = checkAndSaveRole("PASSENGER");
+        Role userRole = checkAndSaveRole("USER");
 
-            adminRole.setAuthorities(new HashSet<>(Set.of(createFlight, updateFlight, readFlight, deleteFlight,
-                    createPassenger, readPassenger,
-                    updatePassenger, deletePassenger, createRoute, readRoute, updateRoute,
-                    createTicket, readTicket, updateTicket, deleteTicket,
-                    reserveSeat, displayAllSeats, changeSeat)));
+        adminRole.setAuthorities(new HashSet<>(Set.of(createFlight, updateFlight, readFlight, deleteFlight,
+                createPassenger, readPassenger,
+                updatePassenger, deletePassenger, createRoute, readRoute, updateRoute,
+                createTicket, readTicket, updateTicket, deleteTicket,
+                reserveSeat, displayAllSeats, changeSeat)));
 
-            passengerRole.setAuthorities(new HashSet<>(Set.of(readFlight, readPassengerPassenger, createPassengerPassenger, readRoute,
-                    createPassengerTicket, readPassengerTicket,
-                    updatePassengerTicket, deletePassengerTicket,
-                    passengerDisplayAllSeats, passengerChangeSeat, passengerReserveSeat)));
+        passengerRole.setAuthorities(new HashSet<>(Set.of(readFlight, readPassengerPassenger, readRoute,
+                createPassengerTicket, readPassengerTicket,
+                updatePassengerTicket, deletePassengerTicket,
+                passengerDisplayAllSeats, passengerChangeSeat, passengerReserveSeat)));
 
-            userRole.setAuthorities(new HashSet<>(Set.of(readFlight, readRoute)));
+        userRole.setAuthorities(new HashSet<>(Set.of(readFlight, readRoute)));
 
-            if (adminRole != null) {
-                roleRepository.save(adminRole);
-            }
-            if (passengerRole != null) {
-                roleRepository.save(passengerRole);
-            }
-            if (userRole != null) {
-                roleRepository.save(userRole);
-            }
+        if (adminRole != null) {
+            roleRepository.save(adminRole);
+        }
+        if (passengerRole != null) {
+            roleRepository.save(passengerRole);
+        }
+        if (userRole != null) {
+            roleRepository.save(userRole);
+        }
 
-            jimMoriarty = checkAndSavePassenger("Jim", "Moriarty", "JM38984399"
-                    , Nationality.UK);
-            gregorMendel = checkAndSavePassenger("Gregor", "Mendel", "GM483984934"
-                    , Nationality.Czech_Republic);
+        jimMoriarty = checkAndSavePassenger("Jim", "Moriarty", "JM38984399"
+                , Nationality.UK);
+        gregorMendel = checkAndSavePassenger("Gregor", "Mendel", "GM483984934"
+                , Nationality.Czech_Republic);
 
-            checkAndSaveUser("alinakr650", "justMe", adminRole);
-            checkAndSaveUser("IreneAdler", "conArtist", userRole);
-            checkAndSaveUser("JimMoriarty", "evilGenius", passengerRole, jimMoriarty);
-            checkAndSaveUser("gregor23", "genetics", passengerRole, gregorMendel);
+        checkAndSaveUser("alinakr650@gmail.com", "justMe1", adminRole);
+        checkAndSaveUser("IreneAdler", "", userRole);
+        checkAndSaveUser("jimMoriarty@gmail.com", "evilGenius1", passengerRole, jimMoriarty);
+        checkAndSaveUser("gregor23@gmail.com", "genetics1", passengerRole, gregorMendel);
 
 
-            log.debug("Users Loaded: " + userRepository.count());
+        log.debug("Users Loaded: " + userRepository.count());
 
     }
 
@@ -172,22 +171,22 @@ public class SecurityDataLoader implements CommandLineRunner {
                         lastname, passportNumber, nationality);
 
         if (!passenger.isPresent()) {
-          PassengerEntity newPassenger = passengerRepository.saveAndFlush(PassengerEntity.builder()
+            PassengerEntity newPassenger = passengerRepository.saveAndFlush(PassengerEntity.builder()
                     .firstName(firstname)
                     .lastName(lastname)
                     .passportNumber(passportNumber)
                     .nationality(nationality)
                     .build());
 
-          return newPassenger;
+            return newPassenger;
         }
 
         return passenger.get();
     }
 
     @Transactional
-    void loadData(){
-        if(routeRepository.count() == 0) {
+    void loadData() {
+        if (routeRepository.count() == 0) {
             RouteEntity routeEntity = new RouteEntity();
             routeEntity.setOrigin("Lyon");
             routeEntity.setDestination("Nice");
@@ -256,5 +255,5 @@ public class SecurityDataLoader implements CommandLineRunner {
             reservedSeatRepository.save(reservedSeatEntity);
             reservedSeatRepository.save(reservedSeatEntity1);
         }
-}
+    }
 }

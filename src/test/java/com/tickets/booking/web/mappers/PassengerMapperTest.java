@@ -25,12 +25,12 @@ public class PassengerMapperTest {
     PassengerEntity passengerEntity;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         passengerEntity = passengerRepository.findAll().get(0);
     }
 
     PassengerMapper passengerMapper = PassengerMapper.PASSENGER_MAPPER_INSTANCE;
-    
+
     UUID id = UUID.randomUUID();
 
     @Test
@@ -76,7 +76,7 @@ public class PassengerMapperTest {
     }
 
     @Test
-    public void updatePassengerFromDto(){
+    public void updatePassengerFromDto() {
 
         PassengerDto passengerDto = new PassengerDto();
         passengerDto.setLastName(passengerEntity.getLastName());

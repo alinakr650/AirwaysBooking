@@ -1,17 +1,14 @@
 package com.tickets.booking.web.controller;
 
-import com.tickets.booking.domain.security.User;
 import com.tickets.booking.security.permissions.*;
 import com.tickets.booking.services.PassengerService;
 import com.tickets.booking.services.TicketService;
 import com.tickets.booking.services.exceptions.TicketNotFoundException;
-import com.tickets.booking.services.exceptions.UserNotFoundException;
 import com.tickets.booking.web.mappers.TicketMapper;
 import com.tickets.booking.web.model.TicketDto;
 import com.tickets.booking.web.model.TicketRequisite;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

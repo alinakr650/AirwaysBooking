@@ -2,8 +2,6 @@ package com.tickets.booking.web.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.tickets.booking.domain.RouteEntity;
-import com.tickets.booking.domain.TicketEntity;
 import lombok.*;
 
 import javax.validation.Valid;
@@ -11,8 +9,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Builder

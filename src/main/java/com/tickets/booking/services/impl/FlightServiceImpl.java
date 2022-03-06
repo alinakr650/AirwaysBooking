@@ -72,8 +72,8 @@ public class FlightServiceImpl implements FlightService {
                 .orElseThrow(() -> new FlightNotFoundException("Flight Not Found Exception"));
         flightMapper.updateFlightFromDto(flightDto, flightEntity);
         flightRepository.save(flightEntity);
-        return flightMapper.flightToFlightDto(flightEntity);}
-
+        return flightMapper.flightToFlightDto(flightEntity);
+    }
 
 
     @Override
@@ -95,7 +95,7 @@ public class FlightServiceImpl implements FlightService {
         routeEntity.addFlight(flightEntity);
         RouteEntity savedRouteEntity = routeRepository.saveAndFlush(routeEntity);
         FlightEntity savedFlightEntity = flightRepository.findFlightEntityByRouteIdAndDepartureDateAndDepartureTime(savedRouteEntity.getId(),
-               flightDto.getDateOfDeparture(), flightDto.getTimeOfDeparture()).orElseThrow(FlightNotFoundException::new);
+                flightDto.getDateOfDeparture(), flightDto.getTimeOfDeparture()).orElseThrow(FlightNotFoundException::new);
         return flightMapper.flightToFlightDto(savedFlightEntity);
     }
 
@@ -125,4 +125,4 @@ public class FlightServiceImpl implements FlightService {
         }
     }
 
-    }
+}

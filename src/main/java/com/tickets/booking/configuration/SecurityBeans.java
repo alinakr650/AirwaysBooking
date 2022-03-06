@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 public class SecurityBeans {
 
     @Bean
-    public GoogleAuthenticator googleAuthenticator(ICredentialRepository credentialRepository){
+    public GoogleAuthenticator googleAuthenticator(ICredentialRepository credentialRepository) {
         GoogleAuthenticatorConfig.GoogleAuthenticatorConfigBuilder configBuilder
                 = new GoogleAuthenticatorConfig.GoogleAuthenticatorConfigBuilder();
 
@@ -34,12 +34,12 @@ public class SecurityBeans {
     }
 
     @Bean
-    public AuthenticationEventPublisher authenticationEventPublisher(ApplicationEventPublisher applicationEventPublisher){
+    public AuthenticationEventPublisher authenticationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
         return new DefaultAuthenticationEventPublisher(applicationEventPublisher);
     }
 
     @Bean
-    public PersistentTokenRepository persistentTokenRepository(DataSource dataSource){
+    public PersistentTokenRepository persistentTokenRepository(DataSource dataSource) {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
         tokenRepository.setDataSource(dataSource);
         return tokenRepository;

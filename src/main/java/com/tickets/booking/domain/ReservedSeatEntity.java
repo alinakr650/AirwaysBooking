@@ -26,11 +26,11 @@ public class ReservedSeatEntity {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name= "flight_id")
+    @JoinColumn(name = "flight_id")
     FlightEntity flightEntity;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name= "ticket_id")
+    @JoinColumn(name = "ticket_id")
     TicketEntity ticketEntity;
 
     @Column(name = "seat_number")

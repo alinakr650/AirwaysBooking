@@ -1,9 +1,6 @@
 package com.tickets.booking.web.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.tickets.booking.domain.FlightEntity;
-import com.tickets.booking.domain.TicketEntity;
 import lombok.*;
 
 import javax.validation.Valid;

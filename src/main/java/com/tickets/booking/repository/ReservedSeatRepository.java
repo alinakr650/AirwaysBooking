@@ -22,6 +22,6 @@ public interface ReservedSeatRepository extends JpaRepository<ReservedSeatEntity
     List<ReservedSeatEntity> findAllByFlightEntityId(@NotNull UUID flightId);
 
     @Query(value = "SELECT re FROM ReservedSeatEntity re WHERE re.ticketEntity.id =:ticketId")
-    Optional <ReservedSeatEntity> findReservedSeatByTicketId(@Param("ticketId") @NotNull UUID ticketId);
+    Optional<ReservedSeatEntity> findReservedSeatByTicketId(@Param("ticketId") @NotNull UUID ticketId);
 
 }

@@ -92,7 +92,7 @@ class FlightControllerTest {
     }
 
     @Test
-    @WithUserDetails("alinakr650")
+    @WithUserDetails("alinakr650@gmail.com")
     void searchThroughFlightsAdmin() throws Exception {
         String origin = "London";
         String destination = "Cardiff";
@@ -109,7 +109,7 @@ class FlightControllerTest {
                 .andExpect(status().is2xxSuccessful());
     }
 
-    @WithUserDetails("JimMoriarty")
+    @WithUserDetails("jimMoriarty@gmail.com")
     @Test
     void findFlightByIdPassenger() throws Exception {
 
@@ -119,7 +119,7 @@ class FlightControllerTest {
                 .andExpect(status().is2xxSuccessful());
     }
 
-    @WithUserDetails("alinakr650")
+    @WithUserDetails("alinakr650@gmail.com")
     @Test
     void findFlightByIdAdmin() throws Exception {
 
@@ -129,7 +129,7 @@ class FlightControllerTest {
                 .andExpect(status().is2xxSuccessful());
     }
 
-    @WithUserDetails("alinakr650")
+    @WithUserDetails("alinakr650@gmail.com")
     @Test
     void createNewFlightAdmin() throws Exception {
 
@@ -159,7 +159,7 @@ class FlightControllerTest {
 
     }
 
-    @WithUserDetails("alinakr650")
+    @WithUserDetails("alinakr650@gmail.com")
     @Test
     void updateFlightAdmin() throws Exception {
 

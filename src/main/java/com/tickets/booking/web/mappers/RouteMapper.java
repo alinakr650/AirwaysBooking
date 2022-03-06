@@ -3,7 +3,6 @@ package com.tickets.booking.web.mappers;
 
 import com.tickets.booking.domain.RouteEntity;
 import com.tickets.booking.web.model.RouteDto;
-import liquibase.pro.packaged.M;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;

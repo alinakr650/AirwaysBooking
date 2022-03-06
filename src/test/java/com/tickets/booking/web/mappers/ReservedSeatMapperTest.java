@@ -3,24 +3,17 @@ package com.tickets.booking.web.mappers;
 import com.tickets.booking.BaseTestClass;
 import com.tickets.booking.domain.FlightEntity;
 import com.tickets.booking.domain.ReservedSeatEntity;
-import com.tickets.booking.domain.RouteEntity;
 import com.tickets.booking.domain.TicketEntity;
 import com.tickets.booking.repository.FlightRepository;
 import com.tickets.booking.repository.ReservedSeatRepository;
 import com.tickets.booking.repository.TicketsRepository;
 import com.tickets.booking.web.model.ReservedSeatDto;
-import liquibase.pro.packaged.F;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -51,7 +44,7 @@ class ReservedSeatMapperTest extends BaseTestClass {
     UUID id = UUID.randomUUID();
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         saveEntities();
         flightEntity = flightRepository.findAll().get(0);
         ticketEntity = ticketsRepository.findAll().get(0);
@@ -87,9 +80,9 @@ class ReservedSeatMapperTest extends BaseTestClass {
         assertThat(reservedSeatDto.getTicketId()).isNull();
         assertThat(reservedSeatDto.getFlightId()).isNull();
     }
-    
+
     @Test
-    public void updateReservedSeatFromDto(){
+    public void updateReservedSeatFromDto() {
 
         ReservedSeatDto reservedSeatDto = new ReservedSeatDto();
         reservedSeatDto.setSeatNumber(reservedSeatEntity.getSeatNumber());

@@ -1,14 +1,10 @@
 package com.tickets.booking.services;
 
 import com.tickets.booking.domain.ReservedSeatEntity;
-import com.tickets.booking.web.model.FlightDto;
 import com.tickets.booking.web.model.ReservedSeatDto;
-import com.tickets.booking.web.model.TicketDto;
-import com.tickets.booking.web.model.TicketRequisite;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Transactional

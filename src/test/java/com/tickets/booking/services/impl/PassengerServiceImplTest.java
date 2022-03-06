@@ -8,7 +8,6 @@ import com.tickets.booking.web.mappers.PassengerMapper;
 import com.tickets.booking.web.model.PassengerDto;
 import com.tickets.booking.web.model.TicketDto;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,7 +16,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.mockito.Mockito.verify;
 
 class PassengerServiceImplTest extends BaseTestClass {
 
@@ -28,12 +26,12 @@ class PassengerServiceImplTest extends BaseTestClass {
     PassengerService passengerService;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         super.saveEntities();
     }
 
     @Test
-    void getAllTicketsByPassenger(){
+    void getAllTicketsByPassenger() {
         UUID id = passengerRepository.findAll().get(0).getId();
         List<TicketDto> tickets = passengerService.findTicketsByPassenger(id);
 
@@ -41,7 +39,7 @@ class PassengerServiceImplTest extends BaseTestClass {
     }
 
     @Test
-    void findPassengerEntityByFirstNameAndLastNameAndPassportNumberAndNationality(){
+    void findPassengerEntityByFirstNameAndLastNameAndPassportNumberAndNationality() {
         Optional<PassengerEntity> passengerEntity = passengerService.findPassengerByFirstNameAndLastNameAndPassportNumberAndNationality("John", "Watson", "JK8438084", Nationality.UK);
 
         assertThat(passengerEntity.get()).isNotNull();
@@ -86,7 +84,7 @@ class PassengerServiceImplTest extends BaseTestClass {
     }
 
     @Test
-    void findTicketsByPassenger(){
+    void findTicketsByPassenger() {
         PassengerEntity passengerEntity = passengerRepository.findAll().get(0);
 
         List<TicketDto> tickets = passengerService.findTicketsByPassenger(passengerEntity.getId());

@@ -3,10 +3,8 @@ package com.tickets.booking.web.mappers;
 import com.tickets.booking.BaseTestClass;
 import com.tickets.booking.domain.FlightEntity;
 import com.tickets.booking.domain.PassengerEntity;
-import com.tickets.booking.domain.RouteEntity;
 import com.tickets.booking.domain.TicketEntity;
 import com.tickets.booking.repository.TicketsRepository;
-import com.tickets.booking.web.model.FlightDto;
 import com.tickets.booking.web.model.TicketDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,10 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,7 +30,7 @@ class TicketMapperTest extends BaseTestClass {
     UUID id = UUID.randomUUID();
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         saveEntities();
         ticketEntity = ticketsRepository.findAll().get(0);
     }

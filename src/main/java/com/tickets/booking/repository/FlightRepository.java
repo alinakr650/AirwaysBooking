@@ -20,8 +20,6 @@ import java.util.UUID;
 @Repository
 public interface FlightRepository extends JpaRepository<FlightEntity, UUID> {
 
-    List<FlightEntity> findFlightsByFlightNumberAndDateOfDeparture(@NotBlank String flightNumber, @NotNull LocalDate dateOfDeparture);
-
     @Query(value = "SELECT fe FROM FlightEntity fe WHERE fe.routeEntity.origin = :origin AND fe.dateOfDeparture =:dateOfDeparture")
     List<FlightEntity> findFlightsByDepartureDateAndOrigin(@Param("origin") @NotBlank String origin,
                                                            @Param("dateOfDeparture") @NotNull LocalDate dateOfDeparture);

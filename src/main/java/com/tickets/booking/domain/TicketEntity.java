@@ -47,7 +47,7 @@ public class TicketEntity implements Serializable {
     private boolean isActive = true;
 
     @PreRemove
-    private void onDelete(){
+    private void onDelete() {
         this.setPassengerEntity(null);
     }
 

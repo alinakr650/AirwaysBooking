@@ -7,9 +7,9 @@ import com.tickets.booking.domain.planes.Plane;
 
 public class PlanePicker {
 
-    public static Plane getPlaneByName(String planeName){
+    public static Plane getPlaneByName(String planeName) {
 
-        switch (planeName){
+        switch (planeName) {
             case "BOEING_737_800":
                 return BOEING_737_800.getInstance();
             case "BOEING_717":

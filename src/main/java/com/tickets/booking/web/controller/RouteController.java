@@ -3,25 +3,18 @@ package com.tickets.booking.web.controller;
 import com.tickets.booking.security.permissions.PassengerUpdatePermission;
 import com.tickets.booking.security.permissions.RouteCreatePermission;
 import com.tickets.booking.security.permissions.RouteReadPermission;
-import com.tickets.booking.services.FlightService;
 import com.tickets.booking.services.RouteService;
 import com.tickets.booking.services.exceptions.RouteNotFoundException;
 import com.tickets.booking.web.mappers.RouteMapper;
-import com.tickets.booking.web.model.FlightDto;
 import com.tickets.booking.web.model.RouteDto;
 import com.tickets.booking.web.model.RoutePagedList;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.lang.Nullable;
+import org.springframework.http.ResponseEntity;;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
-import java.util.List;
 import java.util.UUID;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;

@@ -20,9 +20,9 @@ public interface PassengerRepository extends JpaRepository<PassengerEntity, UUID
 
     @Query("SELECT pe FROM PassengerEntity pe WHERE pe.firstName =:firstName AND pe.lastName=:lastName AND pe.passportNumber =:passportNumber AND pe.nationality =:nationality")
     Optional<PassengerEntity> findPassengerEntityByFirstNameAndLastNameAndPassportNumberAndNationality(@Param("firstName") @NotBlank String firstName,
-                                                                                                      @Param("lastName") @NotBlank String lastName,
-                                                                                                      @Param("passportNumber") @NotBlank String passportNumber,
-                                                                                                      @Param("nationality") Nationality nationality);
+                                                                                                       @Param("lastName") @NotBlank String lastName,
+                                                                                                       @Param("passportNumber") @NotBlank String passportNumber,
+                                                                                                       @Param("nationality") Nationality nationality);
 
     @Query("SELECT pe FROM PassengerEntity pe WHERE pe.id = :id")
     Optional<PassengerEntity> findPassengerEntityById(UUID id);
@@ -32,6 +32,6 @@ public interface PassengerRepository extends JpaRepository<PassengerEntity, UUID
 
     @Query("SELECT pe FROM PassengerEntity pe WHERE pe.passportNumber =:passportNumber AND pe.nationality =:nationality")
     Optional<PassengerEntity> findPassengerByPassportNumberAndNationality(@Param("passportNumber") @NotBlank String passportNumber,
-                                                     @Param("nationality") Nationality nationality);
+                                                                          @Param("nationality") Nationality nationality);
 
 }

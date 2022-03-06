@@ -1,14 +1,12 @@
 package com.tickets.booking.services;
 
 import com.tickets.booking.domain.RouteEntity;
-import com.tickets.booking.services.exceptions.RouteNotFoundException;
-import com.tickets.booking.web.model.FlightDto;
 import com.tickets.booking.web.model.RouteDto;
 import com.tickets.booking.web.model.RoutePagedList;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+
 import java.util.Optional;
 import java.util.UUID;
 

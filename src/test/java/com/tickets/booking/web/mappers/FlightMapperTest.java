@@ -33,7 +33,7 @@ class FlightMapperTest extends BaseTestClass {
     UUID routeId = UUID.randomUUID();
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         saveEntities();
         flightEntity = flightRepository.findAll().get(0);
     }
@@ -71,8 +71,8 @@ class FlightMapperTest extends BaseTestClass {
         flightEntity.setRouteEntity(new RouteEntity());
         flightEntity.setPlaneName("BOEING_717");
         flightEntity.setFlightNumber("CAR30290492");
-        flightEntity.setTimeOfArrival(LocalTime.of(3,40,0));
-        flightEntity.setTimeOfDeparture(LocalTime.of(5,10, 0));
+        flightEntity.setTimeOfArrival(LocalTime.of(3, 40, 0));
+        flightEntity.setTimeOfDeparture(LocalTime.of(5, 10, 0));
         flightEntity.setDateOfArrival(LocalDate.of(2022, 3, 21));
         flightEntity.setDateOfDeparture(LocalDate.of(2022, 3, 25));
 
@@ -96,8 +96,8 @@ class FlightMapperTest extends BaseTestClass {
         flightDto.setRouteId(routeId);
         flightDto.setPlaneName("BOEING_717");
         flightDto.setFlightNumber("CAR30290492");
-        flightDto.setTimeOfArrival(LocalTime.of(3,40,0));
-        flightDto.setTimeOfDeparture(LocalTime.of(5,10, 0));
+        flightDto.setTimeOfArrival(LocalTime.of(3, 40, 0));
+        flightDto.setTimeOfDeparture(LocalTime.of(5, 10, 0));
         flightDto.setDateOfArrival(LocalDate.of(2022, 3, 21));
         flightDto.setDateOfDeparture(LocalDate.of(2022, 3, 25));
 

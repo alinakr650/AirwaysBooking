@@ -7,7 +7,6 @@ import com.tickets.booking.services.exceptions.FlightNotFoundException;
 import com.tickets.booking.web.mappers.FlightMapper;
 import com.tickets.booking.web.model.FlightDto;
 import com.tickets.booking.web.model.PassengerDto;
-import com.tickets.booking.web.model.RouteDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
@@ -57,12 +56,12 @@ public class FlightController {
     @GetMapping({"/search"})
     @ResponseStatus(HttpStatus.OK)
     public List<FlightDto> searchThroughFlights(@RequestParam(name = "origin") @NotBlank String origin,
-                                                   @RequestParam(name = "destination", required = false) @Nullable String destination,
-                                                   @RequestParam(name = "dateOfDeparture") @NotNull String dateOfDeparture,
-                                                   @RequestParam(name = "priceLimit", required = false) @Nullable BigDecimal priceLimit,
-                                                   @Nullable @RequestParam(name = "orderByPriceAsc", required = false) String orderByPriceAsc,
-                                                   @Nullable @RequestParam(name = "orderByPriceDsc", required = false) String orderByPriceDsc,
-                                                   @RequestParam(name = "orderByFlightDurationAsc", required = false) @Nullable String orderByFlightDurationAsc) {
+                                                @RequestParam(name = "destination", required = false) @Nullable String destination,
+                                                @RequestParam(name = "dateOfDeparture") @NotNull String dateOfDeparture,
+                                                @RequestParam(name = "priceLimit", required = false) @Nullable BigDecimal priceLimit,
+                                                @Nullable @RequestParam(name = "orderByPriceAsc", required = false) String orderByPriceAsc,
+                                                @Nullable @RequestParam(name = "orderByPriceDsc", required = false) String orderByPriceDsc,
+                                                @RequestParam(name = "orderByFlightDurationAsc", required = false) @Nullable String orderByFlightDurationAsc) {
         LocalDate date = LocalDate.parse(dateOfDeparture);
         List<UUID> flightIds = flightService.searchFlights(origin, destination, date, priceLimit, orderByPriceAsc,
                 orderByPriceDsc, orderByFlightDurationAsc);
@@ -107,7 +106,6 @@ public class FlightController {
         flightService.deleteFlightById(id);
         return new ResponseEntity(HttpStatus.OK);
     }
-
 
 
 }

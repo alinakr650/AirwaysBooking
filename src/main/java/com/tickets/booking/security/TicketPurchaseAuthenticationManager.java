@@ -11,7 +11,7 @@ import java.util.UUID;
 @Component
 public class TicketPurchaseAuthenticationManager {
 
-    public boolean passengerIdMatches(Authentication authentication, UUID passengerId){
+    public boolean passengerIdMatches(Authentication authentication, UUID passengerId) {
         User authenticatedUser = (User) authentication.getPrincipal();
 
         log.debug("Auth User Passenger Id: " + authenticatedUser.getPassenger().getId() + " Passenger Id:" + passengerId);

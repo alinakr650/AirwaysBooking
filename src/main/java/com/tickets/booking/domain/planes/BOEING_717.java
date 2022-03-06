@@ -10,13 +10,14 @@ public class BOEING_717 extends Plane {
 
     private static BOEING_717 BOEING_717_INSTANCE = null;
 
-    private BOEING_717(){
+    private BOEING_717() {
 
     }
+
     private int seatsCount = 110;
 
-    public static BOEING_717 getInstance(){
-        if(BOEING_717_INSTANCE == null){
+    public static BOEING_717 getInstance() {
+        if (BOEING_717_INSTANCE == null) {
             BOEING_717_INSTANCE = new BOEING_717();
         }
         return BOEING_717_INSTANCE;

@@ -1,7 +1,6 @@
 package com.tickets.booking.services;
 
 import com.tickets.booking.domain.TicketEntity;
-import com.tickets.booking.web.model.TicketDto;
 import com.tickets.booking.web.model.TicketRequisite;
 import org.springframework.transaction.annotation.Transactional;
 

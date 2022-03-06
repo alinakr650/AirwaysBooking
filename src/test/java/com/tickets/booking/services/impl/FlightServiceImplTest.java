@@ -24,8 +24,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
 @ActiveProfiles("test")
-class FlightServiceImplTest extends BaseTestClass
-{
+class FlightServiceImplTest extends BaseTestClass {
     @Autowired
     FlightMapper flightMapper;
 
@@ -98,7 +97,7 @@ class FlightServiceImplTest extends BaseTestClass
     }
 
     @Test
-    void findAllPassengersOnFlight(){
+    void findAllPassengersOnFlight() {
         List<PassengerDto> passengers = flightService.findAllPassengersOnFlight(flightRepository.findAll().get(0));
 
         assertThat(passengers.size()).isEqualTo(1);
@@ -117,10 +116,10 @@ class FlightServiceImplTest extends BaseTestClass
         flightDto.setPlaneName("BOEING_717");
         flightDto.setFlightNumber(routeRepository.findAll().get(0).getFlightNumber());
         flightDto.setRouteId(routeRepository.findAll().get(0).getId());
-        flightDto.setTimeOfDeparture(LocalTime.of(8,40, 37));
-        flightDto.setTimeOfArrival(LocalTime.of(10, 25,23));
-        flightDto.setDateOfDeparture(LocalDate.of(2022,04, 12));
-        flightDto.setDateOfArrival(LocalDate.of(2022, 04,12));
+        flightDto.setTimeOfDeparture(LocalTime.of(8, 40, 37));
+        flightDto.setTimeOfArrival(LocalTime.of(10, 25, 23));
+        flightDto.setDateOfDeparture(LocalDate.of(2022, 04, 12));
+        flightDto.setDateOfArrival(LocalDate.of(2022, 04, 12));
         flightDto.setPrice(BigDecimal.valueOf(56.45));
         return flightDto;
     }

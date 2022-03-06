@@ -56,7 +56,8 @@ class RouteMapperTest {
     void updateRouteFromDto() {
 
         RouteDto routeDto = new RouteDto();
-        routeDto.setId(id);;
+        routeDto.setId(id);
+        ;
         routeDto.setOrigin("London");
         routeDto.setDestination("Cardiff");
         routeDto.setFlightNumber("CAR30290492");

@@ -94,7 +94,7 @@ class PassengerControllerTest {
     @Autowired
     PassengerService passengerService;
 
-    @WithUserDetails("JimMoriarty")
+    @WithUserDetails("jimMoriarty@gmail.com")
     @Test
     void findPassengerByRightPassengerId() throws Exception {
         mockMvc.perform(get("/passengers/" + jimMoriarty.getId())
@@ -102,7 +102,7 @@ class PassengerControllerTest {
                 .andExpect(status().is2xxSuccessful());
     }
 
-    @WithUserDetails("JimMoriarty")
+    @WithUserDetails("jimMoriarty@gmail.com")
     @Test
     void findPassengerByWrongPassengerId() throws Exception {
         mockMvc.perform(get("/passengers/" + gregorMendel.getId())
@@ -110,7 +110,7 @@ class PassengerControllerTest {
                 .andExpect(status().isForbidden());
     }
 
-    @WithUserDetails("alinakr650")
+    @WithUserDetails("alinakr650@gmail.com")
     @Test
     void createNewPassengerAdmin() throws Exception{
         PassengerDto passengerDto = getValidPassengerDto();
@@ -123,7 +123,7 @@ class PassengerControllerTest {
                 .andExpect(status().isCreated());
     }
 
-    @WithUserDetails("gregor23")
+    @WithUserDetails("gregor23@gmail.com")
     @Test
     void createNewPassengerByPassenger() throws Exception{
         PassengerDto passengerDto = getValidPassengerDto();
@@ -136,7 +136,7 @@ class PassengerControllerTest {
                 .andExpect(status().isForbidden());
     }
 
-    @WithUserDetails("alinakr650")
+    @WithUserDetails("alinakr650@gmail.com")
     @Test
     void updatePassengerAdmin() throws Exception{
 
@@ -161,7 +161,7 @@ class PassengerControllerTest {
                 .andExpect(status().isForbidden());
     }
 
-    @WithUserDetails("JimMoriarty")
+    @WithUserDetails("jimMoriarty@gmail.com")
     @Test
     void deletePassengerByPassenger() throws Exception{
 
@@ -171,7 +171,7 @@ class PassengerControllerTest {
 
     @Rollback
     @Transactional
-    @WithUserDetails("alinakr650")
+    @WithUserDetails("alinakr650@gmail.com")
     @Test
     void deletePassengerAdmin() throws Exception{
 

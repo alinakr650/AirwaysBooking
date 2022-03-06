@@ -5,17 +5,18 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 //@Singleton
-public class AIRBUS_A320 extends Plane{
+public class AIRBUS_A320 extends Plane {
 
     private static AIRBUS_A320 AIRBUS_A320_INSTANCE = null;
 
-    private AIRBUS_A320(){
+    private AIRBUS_A320() {
 
     }
+
     private int seatsCount = 140;
 
-    public static AIRBUS_A320 getInstance(){
-        if(AIRBUS_A320_INSTANCE == null){
+    public static AIRBUS_A320 getInstance() {
+        if (AIRBUS_A320_INSTANCE == null) {
             AIRBUS_A320_INSTANCE = new AIRBUS_A320();
         }
         return AIRBUS_A320_INSTANCE;

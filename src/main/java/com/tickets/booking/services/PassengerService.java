@@ -5,10 +5,8 @@ import com.tickets.booking.domain.nationalities.Nationality;
 import com.tickets.booking.web.model.PassengerDto;
 import com.tickets.booking.web.model.TicketDto;
 import com.tickets.booking.web.model.TicketRequisite;
-import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
