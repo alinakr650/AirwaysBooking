@@ -1,7 +1,5 @@
 package com.tickets.booking.domain.planes;
 
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 

@@ -27,4 +27,7 @@ public class RegexValidation {
         return matcher.matches();
     }
 
+    private RegexValidation (){
+    }
+
 }
